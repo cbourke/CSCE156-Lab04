@@ -1,0 +1,269 @@
+\documentclass[12pt]{scrartcl}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={CSCE 156 Lab Handout},
+  pdfauthor={Christopher M. Bourke},
+  pdfsubject={},
+  pdfkeywords={}
+}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage[newfloat=true]{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\title{CSCE 156 -- Computer Science II}
+\subtitle{Lab 4.0 - Classes \& Constructors}
+\author{~}
+\date{~}
+
+\begin{document}
+
+\maketitle
+
+\section*{Prior to Lab}
+
+\begin{enumerate}
+  \item Review this laboratory handout prior to lab.
+  \item Read Object Creation tutorial: \\
+	\url{http://download.oracle.com/javase/tutorial/java/javaOO/objectcreation.html}
+  \item Read constructor tutorial: \\
+	\url{http://download.oracle.com/javase/tutorial/java/javaOO/arguments.html}
+\end{enumerate}
+
+\section*{Lab Objectives \& Topics}
+Following the lab, you should be able to:
+\begin{itemize}
+  \item Use Classes and objects to write Java programs
+  \item Understand and use constructors
+  \item Understand the visibility of a class's methods and how to use them
+\end{itemize}
+
+
+\section*{Peer Programming Pair-Up}
+
+To encourage collaboration and a team environment, labs will be
+structured in a \emph{pair programming} setup.  At the start of
+each lab, you will be randomly paired up with another student 
+(conflicts such as absences will be dealt with by the lab instructor).
+One of you will be designated the \emph{driver} and the other
+the \emph{navigator}.  
+
+The navigator will be responsible for reading the instructions and
+telling the driver what to do next.  The driver will be in charge of the
+keyboard and workstation.  Both driver and navigator are responsible
+for suggesting fixes and solutions together.  Neither the navigator
+nor the driver is ``in charge.''  Beyond your immediate pairing, you
+are encouraged to help and interact and with other pairs in the lab.
+
+Each week you should alternate: if you were a driver last week, 
+be a navigator next, etc.  Resolve any issues (you were both drivers
+last week) within your pair.  Ask the lab instructor to resolve issues
+only when you cannot come to a consensus.  
+
+Because of the peer programming setup of labs, it is absolutely 
+essential that you complete any pre-lab activities and familiarize
+yourself with the handouts prior to coming to lab.  Failure to do
+so will negatively impact your ability to collaborate and work with 
+others which may mean that you will not be able to complete the
+lab.  
+
+\section*{Getting Started}
+
+Clone the project code for this lab from GitHub in Eclipse using the
+URL, \url{https://github.com/cbourke/CSCE156-Lab04}.
+Refer to Lab 01 for instructions on how to clone a project from GitHub.
+
+\section*{Classes \& Constructors}
+
+Java is a class-based Object Oriented Programming Language meaning 
+that it realizes the concept of objects by allowing you to define 
+classes which have member methods and variables.  Instances of classes 
+are \emph{instantiated} through a constructor; a method with the same 
+name as a class and called using the \mintinline{java}{new} keyword.  
+This lab will familiarize you with how classes and their constructors 
+are defined and used.  In addition, you will be introduced to some ways 
+that Java supports other Object Oriented Principles: Encapsulation and 
+Abstraction.
+
+\begin{itemize}
+  \item \emph{Encapsulation} is the means by which objects group data 
+  	and the methods/functions that act on that data.  It is also the 
+	means by which a class's data is protected from the outside 
+	world (outside of the object).  Java achieves this by allowing 
+	you to define member methods and variables and to specify the 
+	visibility of these fields (using the keywords \mintinline{java}{private}, 
+	\mintinline{java}{protected}, and \mintinline{java}{public}).
+  \item \emph{Abstraction} refers to the means by which an object 
+	exposes a public interface to the outside world while hiding 
+	the inner workings (the internal representation or the implementation 
+	details).  Java's main mechanism for supporting this is the same 
+	as with encapsulation though it does provide other means 
+	(interfaces, abstract classes). 
+  \item \emph{Class Signaling} refers to invoking methods on an instance 
+	of a class.  Java uses the dot (or period) operator to signal a class. 
+	That is, to invoke one of its methods.
+\end{itemize}
+
+\section*{Activities}
+
+We have provided a Java project that simulates a library collections 
+system.  It has several classes already defined to model authors, books, 
+a library (a collection of books) and a text-based interface which allows 
+you to search the collection, add books to the collection, and list the collection.  
+
+\subsection*{Constructing Constructors}
+
+\begin{enumerate}
+  \item Run the library program to familiarize yourself with its 
+  	functionality.  Note that printing the collection is not fully 
+	operational
+  \item Complete each of the accessor (getter) methods in the 
+	\mintinline{java}{Book} class.  Best Practice Tip: always use 
+	the \mintinline{java}{this} keyword to disambiguate the scope 
+	of variables and prevent potential problems when subclassing.
+  \item Observe that the \mintinline{java}{Book} class does not have 
+	a constructor defined.  Examine the \mintinline{java}{addBook()} 
+	code and determine how it is possible to create instances of the 
+	\mintinline{java}{Book} class without a constructor.
+  \item Modify the \mintinline{java}{Book} class by adding and 
+	implementing the following constructor.
+	
+\begin{minted}{java}
+public Book(String title, Author author, String isbn, 
+            String publishDate) {
+  //TODO: your code here
+}
+\end{minted}
+
+  \item Adding this constructor will cause syntax errors in other 
+  	parts of the program.  Think about why and then fix these problems 
+	by modifying the code appropriately.
+\end{enumerate}  
+  
+\subsection*{Enforcing Good Encapsulation}
+
+The \mintinline{java}{Book} class is well-designed: it logically groups 
+data and methods together that semantically define what a book is and 
+how you can use it.  The \mintinline{java}{Author} class is not well 
+defined though; its data members are publicly exposed and it has no 
+methods at all.
+
+\begin{enumerate}
+  \item Redesign the \mintinline{java}{Author} class and make its 
+  	member variables private.
+  \item Create and use getter methods to make the members accessible 
+	to the outside world.  Use these methods where appropriate.
+  \item Create setter methods (also called mutator methods) to enable 
+	code outside of the \mintinline{java}{Author} class to change the 
+	member variables.  Add some data validation: for example, do not 
+	allow ``invalid'' values for member variables.  
+  \item Add and make use of an appropriate constructor to this class.
+  \item Add a method to return a \mintinline{java}{String} that is the 
+	author's last name/first name separated by a comma and then utilize 
+	it where appropriate (modify the \mintinline{java}{printBooks()} 
+	method to use this new method instead of formatting the last 
+	name/first name directly).
+\end{enumerate}
+	
+\subsection*{Adding and Using Methods}
+
+The \mintinline{java}{printBooks()} method prints out the title, author, 
+and ISBN in a formatted manner one per line.  In this activity, you will 
+modify it to output additional information: the year of its publication 
+and its age (the number of years since its publication date).  
+
+\begin{enumerate}
+  \item Modify the printBooks method in the \mintinline{java}{LibraryDemo} 
+    class to output the publication year of each book in another column.  
+    Note that the \mintinline{java}{Book} class offers a 
+    \mintinline{java}{getPublishDate()} method already implemented for 
+    you.
+  \item To add the ``age'' column, you will need to add a new method 
+    to the \mintinline{java}{Book} class that returns the number of 
+    years between the publish date and today.  You may find the following 
+    code snippet useful (it utilizes the date/time library provided
+    by Java 8):
+    
+    \mintinline{java}{int years = Period.between(this.publishDate, LocalDate.now()).getYears();}
+\end{enumerate}
+
+\subsection*{Advanced Activity (Optional)}
+
+
+\begin{enumerate}
+  \item The \mintinline{java}{printBooks()} method prints books in the 
+  	order in which they appear in the list.  This isn't as useful as if 
+	they were sorted in some manner.  Read Oracle's tutorial on Object 
+	ordering, \url{http://docs.oracle.com/javase/tutorial/collections/interfaces/order.html}.  Write code to use the 
+	\mintinline{java}{Collections.sort()} method along with an anonymous
+	\mintinline{java}{Comparator<Book>} instance to sort the collection 
+	according to the book's title.
+  \item Composition is when a class owns instance(s) of other classes 
+	(the \mintinline{java}{Book} class owns an instance of the 
+	\mintinline{java}{Author} class).  If different instances of a 
+	class $A_1$ and $A_2$ are given references to the same object $B$, 
+	then changes are made to $B$, the changes will be apparent to both 
+	$A_1$ and $A_2$.  Sometimes this behavior is desired.  Other times 
+	it is not.  One common method to prevent this is to define a 
+	\emph{copy constructor} which takes an instance of the class 
+	and performs a \emph{deep copy} of an object by copying each of 
+	its fields to the new instance.  For example, the copy constructor 
+	for the \mintinline{java}{Author} class may look something like this:
+	
+\begin{minted}{java}
+public Author(Author author) {
+  this.firstName = new String(author.firstName);
+  this.lastName = new String(author.lastName);
+}
+\end{minted}
+	
+	Design and implement a copy constructor for the \mintinline{java}{Book} 
+	class and the \mintinline{java}{Library} class.  How do different 
+	fields need to be copied?
+\end{enumerate}
+
+\end{document}
