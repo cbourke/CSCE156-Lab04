@@ -53,6 +53,8 @@ public class LibraryDemo {
         System.out.print("Enter your search term: ");
         String query = STDIN.next();
         
+        STDIN.nextLine(); // to account for search terms with more than one word
+        
         switch (userChoice) {
         	case 1:
         		printBooks(this.lib.titleSearch(query));
@@ -90,6 +92,7 @@ public class LibraryDemo {
         //change this function
         System.out.println("Please enter the details of the book you want to add to the library");
         System.out.println("Enter the title of the book: ");
+        STDIN.nextLine();
         String title = STDIN.nextLine();
         System.out.println("Enter the first name of the author: ");
         String firstName = STDIN.nextLine();
