@@ -78,7 +78,7 @@ public class LibraryDemo {
         for (Book b : books) {
         	String formattedAuthor = null;
         	if(b.getAuthor() != null)
-        		formattedAuthor = b.getAuthor().lastName + ", " + b.getAuthor().lastName;
+        		formattedAuthor = b.getAuthor().lastName + ", " + b.getAuthor().firstName;
         	String line = String.format("%-50s %-20s %-15s", b.getTitle(), formattedAuthor, b.getISBN());
         	System.out.println(line);
         }
