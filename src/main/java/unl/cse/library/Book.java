@@ -2,6 +2,10 @@ package unl.cse.library;
 
 import java.time.LocalDate;
 
+/**
+ * This class models an individual book.
+ *
+ */
 public class Book {
 
     private String title;

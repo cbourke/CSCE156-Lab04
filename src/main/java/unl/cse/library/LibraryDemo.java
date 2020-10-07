@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main driver file for the library demonstration.
+ *
+ */
 public class LibraryDemo {
 	
 	private final static Scanner STDIN = new Scanner(System.in);
@@ -19,7 +23,7 @@ public class LibraryDemo {
     private void loadFile() {
     	Scanner s = null;
     	try {
-			s = new Scanner(new File("data/books.txt"));
+			s = new Scanner(new File("data/books.csv"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}

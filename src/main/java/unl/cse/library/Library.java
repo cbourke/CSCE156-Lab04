@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This class models a library's collection of books.
+ *
+ */
 public class Library {
 
     private final List<Book> bookCollection;
