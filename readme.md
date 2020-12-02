@@ -179,7 +179,7 @@ years since its publication date).
     
     `int years = Period.between(this.publishDate, LocalDate.now()).getYears();`
 
-### 4. Testing, Submitting & Grading
+## 4. Testing, Submitting & Grading
 
 * Test your programs using the provided JUnit test suite(s).  Fix any
 errors and completely debug your programs.
