@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * This is a suite of tests for the {@link #Author} class.
@@ -20,7 +20,7 @@ public class AuthorTests {
 	 * getters.
 	 */
 	@Test
-	void authorFixedTest01() {
+	public void authorFixedTest01() {
 		Author a = new Author("Liu", "Cixin");
 		Assertions.assertEquals("Liu", a.getFirstName());
 		Assertions.assertEquals("Cixin", a.getLastName());
