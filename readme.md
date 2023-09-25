@@ -1,9 +1,11 @@
 # Computer Science II
 ## Lab 4.0 - Classes & Constructors
+[School of Computing](https://computing.unl.edu)  
+[College of Engineering](https://engineering.unl.edu/)  
+[University of Nebraska-Lincoln](https://unl.edu)  
+[University of Nebraska-Omaha](https://unomaha.edu)  
 
 An introduction to using classes and constructors in the Java programming language.
-
-This is a lab used in Computer Science II (CSCE 156, CSCE 156H) in the [Department of Computer Science & Engineering](https://cse.unl.edu) at the [University of Nebraska-Lincoln](https://unl.edu).
 
 ## Overview
 
@@ -183,10 +185,10 @@ years since its publication date).
 
 * Test your programs using the provided JUnit test suite(s).  Fix any
 errors and completely debug your programs.
-* Submit the following files through webhandin:
+* Submit the following files:
   * `Author.java`
   * `Book.java`
-* Run the grader and verify the output to complete your lab.
+* Verify that all of the tests pass.
 
 ### Advanced Activity (Optional) 
 

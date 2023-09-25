@@ -1,4 +1,4 @@
-package unl.cse.library;
+package unl.soc;
 
 /**
  * Models an author of a book
