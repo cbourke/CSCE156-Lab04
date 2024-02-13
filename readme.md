@@ -103,7 +103,7 @@ list the collection.
 
 ### 3.1 Creating Constructors
 
-1.  Run the library program to familiarize yourself with its
+1.  Run the library program (`LibraryDemo`) to familiarize yourself with its
     functionality. Note that printing the collection is not fully
     operational
 
